@@ -79,6 +79,32 @@ public class MerkModel {
 
         return merk;
     }
+    
+    public void hapusMerk (String Merk_ID) {
+		String query="DELETE FROM merk WHERE Merk_ID = '"+Merk_ID+"'";
+		try {
+			st = con.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    public void tambahMerk(String Merk_ID, String Merk_Mobil) {
+        String query = "INSERT INTO merk (Merk_ID, Merk_Mobil) VALUES ('" + Merk_ID + "', '" + Merk_Mobil + "')";
+        try {
+            st = con.createStatement();
+            int rowsAffected = st.executeUpdate(query);
+            if (rowsAffected > 0) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Failed to insert data.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

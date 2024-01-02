@@ -35,7 +35,7 @@ public class MesinModel {
             listMesin.clear(); 
             while (rs.next()) {
                 Mesin mesin = new Mesin();
-                mesin.setMesin_ID(rs.getInt(1));
+                mesin.setMesin_ID(rs.getString(1));
                 mesin.setMesin(rs.getString(2));
                 listMesin.add(mesin);
             }
@@ -43,5 +43,66 @@ public class MesinModel {
             e.printStackTrace();
         }
         return listMesin;
+    }
+    
+    public void updateMesin(String Mesin_ID, String Mesin) {
+        String query = "UPDATE mesin SET Mesin='" + Mesin + "' WHERE Mesin_ID='" + Mesin_ID + "'";
+        try {
+            st = con.createStatement();
+            int rowsAffected = st.executeUpdate(query);
+            if (rowsAffected > 0) {
+                System.out.println("Data updated successfully!");
+            } else {
+                System.out.println("Failed to update data");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public Mesin getMesinkByID(String idToSearch) {
+        String query = "SELECT * FROM mesin WHERE Mesin_ID=?";
+        Mesin mesin = null;
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, idToSearch);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                mesin = new Mesin();
+                mesin.setMesin_ID(rs.getString("Mesin_ID"));
+                mesin.setMesin(rs.getString("Mesin"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return mesin;
+    }
+    
+    public void hapusMesin (String Mesin_ID) {
+		String query="DELETE FROM mesin WHERE Mesin_ID = '"+Mesin_ID+"'";
+		try {
+			st = con.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    public void tambahMesin(String Mesin_ID, String Mesin) {
+        String query = "INSERT INTO mesin (Mesin_ID, Mesin) VALUES ('" + Mesin_ID + "', '" + Mesin + "')";
+        try {
+            st = con.createStatement();
+            int rowsAffected = st.executeUpdate(query);
+            if (rowsAffected > 0) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Failed to insert data.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

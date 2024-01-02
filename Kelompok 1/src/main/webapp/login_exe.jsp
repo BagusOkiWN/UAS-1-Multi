@@ -28,7 +28,7 @@
 				out.print("<script>alert('password tidak benar');location.href='./login.jsp';</script>");
 			} else {
 				session.setAttribute("Username", user.getUsername());
-				out.print("<script>location.href='./tableMerk.jsp'</script>");
+				out.print("<script>location.href='./tableMesin.jsp'</script>");
 			}
 		}
 	%>
