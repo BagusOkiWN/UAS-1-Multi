@@ -60,7 +60,7 @@ public class MesinModel {
         }
     }
     
-    public Mesin getMesinkByID(String idToSearch) {
+    public Mesin getMesinByID(String idToSearch) {
         String query = "SELECT * FROM mesin WHERE Mesin_ID=?";
         Mesin mesin = null;
 

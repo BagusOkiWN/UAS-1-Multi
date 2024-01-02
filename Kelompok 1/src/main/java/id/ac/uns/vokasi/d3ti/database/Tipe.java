@@ -1,19 +1,18 @@
 package id.ac.uns.vokasi.d3ti.database;
 
 public class Tipe {
-	int Tipe_ID;
-	String Tipe;
-	public int getTipe_ID() {
+	String Tipe_ID;
+	String Tipe_Mobil;
+	public String getTipe_ID() {
 		return Tipe_ID;
 	}
-	public void setTipe_ID(int tipe_ID) {
+	public void setTipe_ID(String tipe_ID) {
 		Tipe_ID = tipe_ID;
 	}
-	public String getTipe() {
-		return Tipe;
+	public String getTipe_Mobil() {
+		return Tipe_Mobil;
 	}
-	public void setTipe(String tipe) {
-		Tipe = tipe;
+	public void setTipe_Mobil(String tipe_Mobil) {
+		Tipe_Mobil = tipe_Mobil;
 	}
-
 }
