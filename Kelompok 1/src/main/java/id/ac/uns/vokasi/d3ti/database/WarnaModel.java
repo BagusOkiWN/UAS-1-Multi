@@ -35,7 +35,7 @@ public class WarnaModel {
             listWarna.clear(); 
             while (rs.next()) {
                 Warna warna = new Warna();
-                warna.setWarna_ID(rs.getInt(1));
+                warna.setWarna_ID(rs.getString(1));
                 warna.setWarna_Mobil(rs.getString(2));
                 listWarna.add(warna);
             }
@@ -43,5 +43,66 @@ public class WarnaModel {
             e.printStackTrace();
         }
         return listWarna;
+    }
+    
+    public void updateWarna(String Warna_ID, String Warna_Mobil) {
+        String query = "UPDATE warna SET Warna_Mobil='" + Warna_Mobil + "' WHERE Warna_ID='" + Warna_ID + "'";
+        try {
+            st = con.createStatement();
+            int rowsAffected = st.executeUpdate(query);
+            if (rowsAffected > 0) {
+                System.out.println("Data updated successfully!");
+            } else {
+                System.out.println("Failed to update data");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public Warna getWarnaByID(String idToSearch) {
+        String query = "SELECT * FROM warna WHERE Warna_ID=?";
+        Warna warna = null;
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, idToSearch);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                warna = new Warna();
+                warna.setWarna_ID(rs.getString("Warna_ID"));
+                warna.setWarna_Mobil(rs.getString("Warna_Mobil"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return warna;
+    }
+    
+    public void hapusWarna (String Warna_ID) {
+		String query="DELETE FROM warna WHERE Warna_ID = '"+Warna_ID+"'";
+		try {
+			st = con.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    public void tambahWarna(String Warna_ID, String Warna_Mobil) {
+        String query = "INSERT INTO warna (Warna_ID, Warna_Mobil) VALUES ('" + Warna_ID + "', '" + Warna_Mobil + "')";
+        try {
+            st = con.createStatement();
+            int rowsAffected = st.executeUpdate(query);
+            if (rowsAffected > 0) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Failed to insert data.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

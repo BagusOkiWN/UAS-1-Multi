@@ -1,19 +1,18 @@
 package id.ac.uns.vokasi.d3ti.database;
 
 public class Transmisi {
-	int Transmisi_ID;
-	String Transmisi;
-	public int getTransmisi_ID() {
+	String Transmisi_ID;
+	String Transmisi_Mobil;
+	public String getTransmisi_ID() {
 		return Transmisi_ID;
 	}
-	public void setTransmisi_ID(int transmisi_ID) {
+	public void setTransmisi_ID(String transmisi_ID) {
 		Transmisi_ID = transmisi_ID;
 	}
-	public String getTransmisi() {
-		return Transmisi;
+	public String getTransmisi_Mobil() {
+		return Transmisi_Mobil;
 	}
-	public void setTransmisi(String transmisi) {
-		Transmisi = transmisi;
+	public void setTransmisi_Mobil(String transmisi_Mobil) {
+		Transmisi_Mobil = transmisi_Mobil;
 	}
-
 }

@@ -1,12 +1,12 @@
 package id.ac.uns.vokasi.d3ti.database;
 
 public class Warna {
-	int Warna_ID;
+	String Warna_ID;
 	String Warna_Mobil;
-	public int getWarna_ID() {
+	public String getWarna_ID() {
 		return Warna_ID;
 	}
-	public void setWarna_ID(int warna_ID) {
+	public void setWarna_ID(String warna_ID) {
 		Warna_ID = warna_ID;
 	}
 	public String getWarna_Mobil() {
